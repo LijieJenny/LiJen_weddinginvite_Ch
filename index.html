@@ -33,20 +33,20 @@
 #lang-toggle { display: none; }
 
 /* Default: EN visible, ZH hidden */
-.zh { display: none !important; }
-.en { display: block; }
-span.en { display: inline; }
-span.zh { display: none; }
-li.en { display: list-item; }
-li.zh { display: none; }
+.en { display: none !important; }
+.zh { display: block; }
+span.zh { display: inline; }
+span.en { display: none; }
+li.zh { display: list-item; }
+li.en { display: none; }
 
 /* When checkbox is checked: ZH visible, EN hidden */
-#lang-toggle:checked ~ * .en { display: none !important; }
-#lang-toggle:checked ~ * .zh { display: block !important; }
-#lang-toggle:checked ~ * span.en { display: none !important; }
-#lang-toggle:checked ~ * span.zh { display: inline !important; }
-#lang-toggle:checked ~ * li.en { display: none !important; }
-#lang-toggle:checked ~ * li.zh { display: list-item !important; }
+#lang-toggle:checked ~ * .zh { display: none !important; }
+#lang-toggle:checked ~ * .en { display: block !important; }
+#lang-toggle:checked ~ * span.zh { display: none !important; }
+#lang-toggle:checked ~ * span.en { display: inline !important; }
+#lang-toggle:checked ~ * li.zh { display: none !important; }
+#lang-toggle:checked ~ * li.en { display: list-item !important; }
 
 /* Toggle label states */
 .lang-en-label { opacity: 1; }
@@ -54,10 +54,7 @@ li.zh { display: none; }
 #lang-toggle:checked ~ * .lang-en-label { opacity: 0.4; }
 #lang-toggle:checked ~ * .lang-zh-label { opacity: 1; }
 
-/* Smaller Chinese text only in the Rules section */
-#rules .zh {
-  font-size: 0.9em;
-}
+
 
 /* ============================================================
    RESET & BASE
