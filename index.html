@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Li &amp; Jenny — 7 September 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap');
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --ivory: #F5F0E8;
+  --ivory-dark: #EDE5D5;
+  --ivory-mid: #FAF7F2;
+  --wine: #7A1A2E;
+  --wine-light: #9B2438;
+  --wine-pale: #F9F0F2;
+  --gold: #C9A96E;
+  --gold-light: #DFC08A;
+  --gold-pale: #F5EDD8;
+  --charcoal: #2A2320;
+  --charcoal-mid: #4A3F3A;
+  --charcoal-light: #7A6E6A;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Montserrat', sans-serif;
+}
+
+/* ============================================================
+   LANGUAGE TOGGLE (CSS CHECKBOX HACK)
+   ============================================================ */
+#lang-toggle { display: none; }
+
+/* Default: EN visible, ZH hidden */
+.zh { display: none !important; }
+.en { display: block; }
+span.en { display: inline; }
+span.zh { display: none; }
+li.en { display: list-item; }
+li.zh { display: none; }
+
+/* When checkbox is checked: ZH visible, EN hidden */
+#lang-toggle:checked ~ * .en { display: none !important; }
+#lang-toggle:checked ~ * .zh { display: block !important; }
+#lang-toggle:checked ~ * span.en { display: none !important; }
+#lang-toggle:checked ~ * span.zh { display: inline !important; }
+#lang-toggle:checked ~ * li.en { display: none !important; }
+#lang-toggle:checked ~ * li.zh { display: list-item !important; }
+
+/* Toggle label states */
+.lang-en-label { opacity: 1; }
+.lang-zh-label { opacity: 0.4; }
+#lang-toggle:checked ~ * .lang-en-label { opacity: 0.4; }
+#lang-toggle:checked ~ * .lang-zh-label { opacity: 1; }
+
+/* Smaller Chinese text only in the Rules section */
+#rules .zh {
+  font-size: 0.9em;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background-color: var(--ivory);
+  color: var(--charcoal);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+.serif { font-family: var(--serif); }
+.heading-xl {
+  font-family: var(--serif);
+  font-size: clamp(3.5rem, 8vw, 9rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+.heading-lg {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+.heading-md {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+.heading-sm {
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+  font-weight: 400;
+  font-style: italic;
+}
+.label {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--charcoal-light);
+}
+.label-gold {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.body-text {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--charcoal-mid);
+}
+.quote-text {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--charcoal-mid);
+}
+
+/* ============================================================
+   DECORATIVE ELEMENTS
+   ============================================================ */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+.ornament::before, .ornament::after {
+  content: '';
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: var(--gold);
+}
+.ornament-symbol {
+  font-family: var(--serif);
+  color: var(--gold);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto;
+}
+.divider-full {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 0;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 3rem;
+  background: rgba(245, 240, 232, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+}
+.nav-brand {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--charcoal);
+}
+.nav-brand span {
+  color: var(--wine);
+}
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal-mid);
+  transition: color 0.3s ease;
+}
+.nav-links a:hover { color: var(--wine); }
+
+/* Language Toggle */
+.lang-toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.lang-toggle-label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--ivory-dark);
+  border: 1px solid rgba(201, 169, 110, 0.4);
+  border-radius: 30px;
+  padding: 0.3rem 0.6rem;
+  transition: all 0.3s;
+}
+.lang-toggle-label:hover { border-color: var(--gold); }
+.lang-text {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: opacity 0.3s;
+  color: var(--charcoal);
+}
+.toggle-track {
+  width: 30px;
+  height: 16px;
+  background: var(--ivory-dark);
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  position: relative;
+  transition: background 0.3s;
+}
+.toggle-thumb {
+  width: 10px;
+  height: 10px;
+  background: var(--wine);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease, background 0.3s;
+}
+#lang-toggle:checked ~ * .toggle-thumb {
+  transform: translateX(14px);
+  background: var(--gold);
+}
+#lang-toggle:checked ~ * .toggle-track {
+  background: var(--gold-pale);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.hero-image {
+  position: absolute;
+  inset: 0;
+}
+.hero-image img {
+  animation: heroZoom 20s ease-in-out infinite alternate;
+}
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(42, 35, 32, 0.08) 0%,
+    rgba(42, 35, 32, 0.0) 30%,
+    rgba(42, 35, 32, 0.55) 70%,
+    rgba(42, 35, 32, 0.75) 100%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 5rem 6vw;
+  width: 100%;
+  animation: heroFadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.3s;
+}
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-eyebrow {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1.2rem;
+}
+.hero-names {
+  color: var(--ivory);
+  margin-bottom: 1.4rem;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.2);
+}
+.hero-names .ampersand {
+  color: var(--gold-light);
+  font-style: italic;
+}
+.hero-date {
+  font-family: var(--serif);
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: rgba(245, 240, 232, 0.85);
+  margin-bottom: 2rem;
+}
+.hero-scroll-hint {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.hero-scroll-hint::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(245, 240, 232, 0.35);
+}
+
+   .form-message {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  border-radius: 4px;
+}
+
+.form-message.error {
+  background: #ffefef;
+  color: #a30000;
+  border: 1px solid #d99;
+}
+
+.form-message.success {
+  background: #e9f9ef;
+  color: #0a7a2a;
+  border: 1px solid #9ddeb1;
+}
+
+.error {
+  border-bottom-color: #a30000 !important;
+}
+
+/* ============================================================
+   SECTION WRAPPER
+   ============================================================ */
+section {
+  position: relative;
+}
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+.section-padded {
+  padding: 8rem 5vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   EVENT DETAILS
+   ============================================================ */
+#details {
+  background: var(--ivory);
+}
+.details-header {
+  text-align: center;
+  padding: 3rem 5vw 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.venue-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.venue-card {
+  background: var(--ivory-mid);
+  padding: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.venue-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--wine);
+}
+.venue-card-image {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+.venue-card-image img {
+  transition: transform 0.6s ease;
+}
+.venue-card:hover .venue-card-image img {
+  transform: scale(1.04);
+}
+.venue-number {
+  font-family: var(--serif);
+  font-size: 4rem;
+  font-weight: 300;
+  color: rgba(201, 169, 110, 0.2);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.venue-type {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--wine);
+  margin-bottom: 0.8rem;
+}
+.venue-name {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  color: var(--charcoal);
+}
+.venue-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+.venue-detail-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+.venue-detail-text {
+  font-size: 0.82rem;
+  color: var(--charcoal-mid);
+  line-height: 1.5;
+}
+.venue-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.8rem;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--wine);
+  border-bottom: 1px solid var(--wine);
+  padding-bottom: 2px;
+  transition: color 0.3s, border-color 0.3s;
+}
+.venue-map-link:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.venue-bottom {
+  padding: 4rem 0 7rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+/* ============================================================
+   SCHEDULE / DAGPROGRAMMA
+   ============================================================ */
+#schedule {
+  background: var(--wine);
+  color: var(--ivory);
+}
+.schedule-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 8rem 5vw;
+}
+.schedule-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.timeline {
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 100px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(201, 169, 110, 0.3);
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 3rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.12);
+  position: relative;
+  animation: none;
+}
+.timeline-item:last-child {
+  border-bottom: none;
+}
+.timeline-time {
+  font-family: var(--serif);
+  font-size: 1.55rem;
+  font-weight: 300;
+  color: var(--gold);
+  text-align: right;
+  padding-right: 2rem;
+  line-height: 1.3;
+}
+.timeline-dot {
+  position: absolute;
+  left: 94px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--wine);
+  border: 2px solid var(--gold);
+}
+.timeline-content {
+  padding-left: 1.5rem;
+}
+.timeline-event-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+.timeline-event-title {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--ivory);
+  margin-bottom: 0.4rem;
+}
+.timeline-event-desc {
+  font-size: 0.8rem;
+  color: rgba(245, 240, 232, 0.55);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   DRESS CODE
+   ============================================================ */
+#dresscode {
+  background: var(--ivory-mid);
+}
+.dresscode-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8rem 5vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.dresscode-image {
+  position: relative;
+  height: 560px;
+  overflow: hidden;
+}
+.dresscode-image::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: -1.5rem;
+  bottom: -1.5rem;
+  border: 1px solid var(--gold-light);
+  z-index: 0;
+}
+.dresscode-image img {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+.dresscode-text { }
+.dresscode-code {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 300;
+  color: var(--wine);
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+.dresscode-palette {
+  display: flex;
+  gap: 0.8rem;
+  margin: 2rem 0;
+}
+.palette-swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+/* ============================================================
+   TRAVEL & ACCOMMODATIONS
+   ============================================================ */
+#travel {
+  background: var(--ivory);
+}
+.travel-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8rem 5vw;
+}
+.travel-header { margin-bottom: 4rem; }
+.travel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 3rem;
+}
+.travel-card {
+  background: var(--ivory-mid);
+  padding: 3rem;
+  border-top: 2px solid var(--wine);
+}
+.travel-card-icon {
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--wine);
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+.travel-card-title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+}
+.hotel-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+.hotel-list li {
+  font-size: 0.82rem;
+  color: var(--charcoal-mid);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--ivory-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.hotel-list li::before {
+  content: '—';
+  color: var(--gold);
+  font-size: 0.7rem;
+}
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+#gallery {
+  background: var(--charcoal);
+}
+.gallery-header {
+  text-align: center;
+  padding: 6rem 5vw 3rem;
+  color: var(--ivory);
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  gap: 4px;
+  padding: 0 4px 4px;
+}
+.gallery-item {
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.gallery-item img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: brightness(0.9) saturate(0.85);
+}
+.gallery-item:hover img {
+  transform: scale(1.06);
+  filter: brightness(1) saturate(1);
+}
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(42, 35, 32, 0.0);
+  transition: background 0.4s;
+}
+.gallery-item:hover::after {
+  background: rgba(42, 35, 32, 0.0);
+}
+
+/* Grid layout */
+.gi-1 { grid-column: 1 / 6; grid-row: 1; height: 420px; }
+.gi-2 { grid-column: 6 / 9; grid-row: 1; height: 420px; }
+.gi-3 { grid-column: 9 / 13; grid-row: 1; height: 420px; }
+.gi-4 { grid-column: 1 / 5; grid-row: 2; height: 340px; }
+.gi-5 { grid-column: 5 / 9; grid-row: 2; height: 340px; }
+.gi-6 { grid-column: 9 / 13; grid-row: 2; height: 340px; }
+
+/* ============================================================
+   RSVP FORM
+   ============================================================ */
+#rsvp {
+  background: var(--ivory-mid);
+}
+.rsvp-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8rem 5vw;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 6rem;
+  align-items: start;
+}
+.rsvp-aside {
+  position: sticky;
+  top: 7rem;
+}
+.rsvp-image {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin-top: 2.5rem;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.form-group.full-width { grid-column: 1 / -1; }
+.form-label {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal-light);
+}
+.form-input, .form-textarea, .form-select {
+  background: var(--ivory);
+  border: 1px solid var(--ivory-dark);
+  border-bottom: 1px solid var(--charcoal-light);
+  padding: 0.9rem 0;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  outline: none;
+  border-radius: 0;
+  transition: border-color 0.3s;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-bottom-color: var(--wine);
+}
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  padding: 0.7rem 0;
+}
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237A6E6A'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  padding-right: 2rem;
+}
+.radio-group {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.3rem;
+}
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+.radio-item input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--charcoal-light);
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.3s;
+}
+.radio-item input[type="radio"]:checked {
+  border-color: var(--wine);
+}
+.radio-item input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--wine);
+}
+.radio-item label {
+  font-size: 0.82rem;
+  color: var(--charcoal-mid);
+  cursor: pointer;
+}
+.form-submit {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+.btn-submit {
+  background: var(--wine);
+  color: var(--ivory);
+  border: none;
+  padding: 1.1rem 3.5rem;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn-submit:hover { background: var(--charcoal); }
+
+
+/* ============================================================
+   RULES
+   ============================================================ */
+#rules {
+  background: var(--ivory-mid: #f7f3eb;);
+}
+.rules-inner {
+  max-width: 1100px; /* slightly less than RSVP */
+  margin: 0 auto;
+  padding: 5rem 5vw 3rem 5vw;
+  display: grid;
+  gap: 6rem;
+  align-items: start;
+}
+.rules-header {
+  margin-top: -1.5rem; /* pull header upward */
+margin-bottom: 2rem;
+}
+
+.rules-aside {
+  position: sticky;
+  top: 7rem;
+}
+
+.rules-lg {
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.rules-sm {
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+  font-weight: 400;
+  font-style: italic;
+}
+.rules-text {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--charcoal-mid);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--charcoal);
+  color: var(--ivory);
+  padding: 5rem 5vw 3rem;
+  text-align: center;
+}
+.footer-names {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 300;
+  color: var(--ivory);
+  margin-bottom: 0.5rem;
+}
+.footer-names .amp {
+  color: var(--gold);
+  font-style: italic;
+}
+.footer-date {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--charcoal-light);
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+.footer-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.footer-ornament::before, .footer-ornament::after {
+  content: '';
+  width: 80px;
+  height: 1px;
+  background: rgba(201, 169, 110, 0.3);
+}
+.footer-heart {
+  color: var(--wine);
+  font-size: 1.1rem;
+}
+.footer-bottom {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: rgba(122, 110, 106, 0.5);
+  text-transform: uppercase;
+}
+
+.center-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.two-column-wrapper {
+  width: 600px !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 40px !important;
+  position: relative !important;
+}
+
+.two-column-wrapper::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 1px);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #ddd;
+}
+
+.column {
+  padding: 10px 20px !important;
+  text-align: left !important;
+  width: 260px;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET
+   ============================================================ */
+@media (max-width: 1024px) {
+  nav { padding: 1rem 2rem; }
+  .nav-links { display: none; }
+  .story-grid { grid-template-columns: 1fr; }
+  .story-image-col { min-height: 450px; position: relative; height: 450px; }
+  .story-image-col img { position: absolute; }
+  .story-text-col { padding: 4rem 2rem; }
+  .venue-cards { grid-template-columns: 1fr; }
+  .dresscode-inner { grid-template-columns: 1fr; }
+  .dresscode-image { height: 400px; }
+  .travel-grid { grid-template-columns: 1fr 1fr; }
+  .rsvp-inner { grid-template-columns: 1fr; }
+  .rsvp-aside { position: static; }
+  .gallery-grid { grid-template-columns: repeat(6, 1fr); }
+  .gi-1 { grid-column: 1 / 4; height: 300px; }
+  .gi-2 { grid-column: 4 / 7; height: 300px; }
+  .gi-3 { grid-column: 1 / 4; grid-row: 2; height: 280px; }
+  .gi-4 { grid-column: 4 / 7; grid-row: 2; height: 280px; }
+  .gi-5 { grid-column: 1 / 4; grid-row: 3; height: 260px; }
+  .gi-6 { grid-column: 4 / 7; grid-row: 3; height: 260px; }
+
+.two-column-wrapper {
+    width: 100% !important;
+    max-width: 700px !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 30px !important;
+    margin: 0 auto !important;
+  }
+
+  .two-column-wrapper::after {
+    left: 50% !important; /* keep center line */
+  }
+
+  .column {
+    width: 100% !important;
+    padding: 0 10px !important;
+    text-align: left !important;
+  }
+
+  .radio-item {
+    font-size: 14px !important;
+  }
+
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  nav { padding: 0.9rem 1.2rem; }
+  .nav-brand { font-size: 0.95rem; }
+  .hero-content { padding: 3rem 1.5rem; }
+  .section-padded { padding: 5rem 1.5rem; }
+  .schedule-inner { padding: 5rem 1.5rem; }
+  .dresscode-inner { padding: 5rem 1.5rem; gap: 3rem; }
+  .travel-inner { padding: 5rem 1.5rem; }
+  .travel-grid { grid-template-columns: 1fr; }
+  .rsvp-inner {
+    padding: 5rem 1.5rem 3%; /* bottom padding now % */
+    gap: 2rem;
+  }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-group.full-width { grid-column: 1; }
+  .form-submit { grid-column: 1; }
+  .timeline::before { left: 0; }
+  .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+.timeline-time { 
+  text-align: left; 
+  padding-left: 1.5rem; 
+  font-size: 1.5rem; 
+}
+
+.timeline-content { 
+  padding-left: 2rem; 
+}
+
+  .timeline-dot {
+  position: absolute;
+  left: -6px;
+  top: 25%;
+  transform: translateY(-50%);
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--wine);
+  border: 2px solid var(--gold);
+}
+  .timeline-content { padding-left: 2; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 3px; }
+  .gi-1, .gi-2, .gi-3, .gi-4, .gi-5, .gi-6 { grid-column: auto; grid-row: auto; height: 200px; }
+  .venue-card { padding: 2rem 1.5rem; }
+  footer { padding: 3rem 1.5rem 2rem; }
+  .details-header { padding: 5rem 1.5rem 3rem; }
+  .venue-bottom { padding: 2rem 1.5rem 5rem; }
+
+.two-column-wrapper {
+    width: 100% !important;
+    grid-template-columns: 1fr !important; /* stack vertically */
+    gap: 25px !important;
+    margin: 0 auto !important;
+  }
+
+  .two-column-wrapper::after {
+    display: none !important; /* remove center line */
+  }
+
+  .column {
+    width: 100% !important;
+    padding: 0 !important;
+    text-align: left !important;
+  }
+
+.radio-item {
+    font-size: 12px !important;
+  }
+}
+</style>
+</head>
+   
+
+<body>
+
+<!-- LANGUAGE TOGGLE INPUT (must be sibling of body content) -->
+<input type="checkbox" id="lang-toggle">
+
+<nav>
+  <div class="nav-brand">
+    <span>Li</span> &amp; <span>Jenny</span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#details" class="en">Details</a><a href="#details" class="zh">详情</a></li>
+    <li><a href="#schedule" class="en">Program</a><a href="#schedule" class="zh">流程</a></li>
+   <!--  <li><a href="#gallery" class="en">Gallery</a><a href="#gallery" class="zh">画廊</a></li>-->
+    <li><a href="#rsvp" class="en">RSVP</a><a href="#gallery" class="zh">敬请回复</a></li>
+
+  </ul>
+
+  <div class="lang-toggle-wrapper">
+    <label class="lang-toggle-label" for="lang-toggle">
+      <span class="lang-text lang-en-label">EN</span>
+      <div class="toggle-track">
+        <div class="toggle-thumb"></div>
+      </div>
+      <span class="lang-text lang-zh-label">中文</span>
+    </label>
+  </div>
+</nav>
+
+<!-- ============================================================
+     1. HERO
+     ============================================================ -->
+<section id="hero">
+  <div class="hero-image">
+<img
+  src="picture.jpeg"
+  alt="Li & Jenny"
+  style="opacity: 0.8; object-position: 45% center; width: 100%; height: 100%; object-fit: cover;"
+>
+     
+
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow en">We are getting married!</p>
+    <p class="hero-eyebrow zh">我们要结婚啦!</p>
+    <h1 class="heading-xl hero-names">
+      Li <span class="ampersand">&amp;</span><br>Jenny
+    </h1>
+    <p class="hero-date en">September 7· 2026 · Baarn &amp; Amersfoort</p>
+    <p class="hero-date zh">2026 年 9 月 7 日 · Baarn &amp; Amersfoort</p>
+    <p class="hero-scroll-hint en">Scroll to discover more</p>
+    <p class="hero-scroll-hint zh">向下滑动，了解更多</p>
+  </div>
+</section>
+
+
+
+<!-- ============================================================
+     4. EVENT DETAILS
+     ============================================================ -->
+<section id="details">
+  <div class="details-header">
+
+    <div class="en">
+      <h2 class="heading-lg" style="color:var(--wine); margin-bottom:1rem;">Venues &amp; Times</h2>
+    </div>
+    <div class="zh">
+      <h2 class="heading-lg" style="color:var(--wine); margin-bottom:1rem;">地点与时间</h2>
+    </div>
+
+    <div class="ornament"><span class="ornament-symbol">✦</span></div>
+  </div>
+
+  <div class="venue-cards">
+    <!-- Ceremony Card -->
+    <div class="venue-card">
+      <div class="venue-card-image">
+        <img
+          src="https://storage.pubble.nl/96897487/content/2024/4/e1da05a3-385c-4bfa-a92a-e6e44a22a1c0_thumb1920.jpg"
+          alt="Ceremonie locatie / Ceremony venue"
+        >
+      </div>
+      <div class="venue-number en">Location 1</div>
+      <div class="venue-number zh">场地 1</div>
+      <p class="venue-type en">Ceremony &amp; Reception</p>
+      <p class="venue-type zh">仪式与午宴</p>
+      <h3 class="venue-name en">Kasteel De Hooge Vuursche<br></h3>
+      <h3 class="venue-name zh">Kasteel De Hooge Vuursche<br></h3>
+
+      <div class="venue-detail">
+        <span class="venue-detail-icon">◷</span>
+        <span class="venue-detail-text en">Arrivals from 12:00 · Ceremony at 14:00</em></span>
+        <span class="venue-detail-text zh">来宾入场：中午十二点起 · 仪式开始：下午二点整</em></span>
+      </div>
+      <div class="venue-detail">
+        <span class="venue-detail-icon">◉</span>
+        <span class="venue-detail-text">Hilversumsestraatweg 14, 3744 KC Baarn</span>
+      </div>
+      <div class="venue-detail">
+        <span class="venue-detail-icon">❧</span>
+        <span class="venue-detail-text en">Free parking available on site</span>
+        <span class="venue-detail-text zh">现场提供免费停车位</span>
+      </div>
+
+      <a
+        href="https://maps.app.goo.gl/2kvawbYK2eSgAmjAA"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="venue-map-link"
+      >
+        <span class="en">Open navigation to the venue→</span>
+        <span class="zh">请点击此处开启前往场地的导航 →</span>
+      </a>
+    </div>
+
+    <!-- Party Card -->
+    <div class="venue-card">
+      <div class="venue-card-image">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/5/54/Koppelpoort_Night.jpg"
+          alt="Feestlocatie / Party venue"
+        >
+      </div>
+      <div class="venue-number en"> Location 2</div>
+      <div class="venue-number zh">场地 2</div>
+      <p class="venue-type en">Dinner &amp; Party</p>
+      <p class="venue-type zh">婚庆与晚宴</p>
+
+      <h3 class="venue-name en">Masal Party & Eventcenter<br></h3>
+      <h3 class="venue-name zh">Masal Party & Eventcenter<br></h3>
+
+      <div class="venue-detail">
+        <span class="venue-detail-icon">◷</span>
+        <span class="venue-detail-text en">Arrivals from 17:00 · Dinner at 18:00</em></span>
+        <span class="venue-detail-text zh">来宾入场：下午五点起 · 晚宴开始：下午六点整</em></span>
+      </div>
+      <div class="venue-detail">
+        <span class="venue-detail-icon">◉</span>
+        <span class="venue-detail-text">Havenweg 62, 3812 PR Amersfoort</span>
+      </div>
+
+      <div class="venue-detail">
+        <span class="venue-detail-icon">❧</span>
+        <span class="venue-detail-text en">Free parking available on site</span>
+        <span class="venue-detail-text zh">现场提供免费停车位</span>
+      </div>
+
+
+      <a
+        href="https://www.google.com/maps/place/Masal+Party+%26+Eventcenter+-+PR+Amersfoort/@52.1678511,5.3305358,14z/data=!3m1!4b1!4m6!3m5!1s0x47c646b3af947f03:0x18d6815fbff9da46!8m2!3d52.1678305!4d5.3674442!16s%2Fg%2F11dxkv4pps?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="venue-map-link"
+      >
+        <span class="en">Open navigation to the event celebration and dinner →</span>
+        <span class="zh">开启前往婚庆活动与晚宴地点的导航 →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- ============================================================
+     5. SCHEDULE / DAGPROGRAMMA
+     ============================================================ -->
+<section id="schedule">
+  <div class="schedule-inner">
+    <div class="schedule-header">
+
+      <div class="en">
+        <h2 class="heading-lg" style="color:var(--ivory); margin-bottom:1rem;">The Day's Program</h2>
+      </div>
+      <div class="zh">
+        <h2 class="heading-lg" style="color:var(--ivory); margin-bottom:1rem;">当日日程安排</h2>
+      </div>
+       <div class="ornament"><span class="ornament-symbol">✦</span></div>
+    </div>
+
+    <div class="timeline">
+      <!-- Item 1 -->
+      <div class="timeline-item">
+        <div class="timeline-time">12:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <p class="timeline-event-label en">Arrival</p>
+          <p class="timeline-event-label zh">迎宾</p>
+          <h3 class="timeline-event-title en">Welcome &amp; Arrival Drinks</h3>
+          <h3 class="timeline-event-title zh">恭候来宾</h3>
+          <p class="timeline-event-desc en">Guests are welcomed at the beautiful castle of Hooge Vuursche in Baarn.</p>
+          <p class="timeline-event-desc zh">诚挚欢迎各位贵宾莅临位于巴恩的美丽 Hooge Vuursche 城堡。</p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="timeline-item">
+        <div class="timeline-time">12:30</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <p class="timeline-event-label en">Lunch</p>
+          <p class="timeline-event-label zh">午餐</p>
+          <h3 class="timeline-event-title en">Lunch Hosted at the Castle</h3>
+          <h3 class="timeline-event-title zh">婚庆午宴</h3>
+          <p class="timeline-event-desc en">Delicious sandwiches, finger foods and drinks will be served.</p>
+          <p class="timeline-event-desc zh">将为宾客提供精致三明治、小食及饮品。</p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="timeline-item">
+        <div class="timeline-time">14:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <p class="timeline-event-label en">Ceremony</p>
+          <p class="timeline-event-label zh">仪式</p>
+          <h3 class="timeline-event-title en">The Wedding Ceremony</h3>
+          <h3 class="timeline-event-title zh">婚礼仪式</h3>
+          <p class="timeline-event-desc en">Join us as we exchange vows and begin our next chapter.</p>
+          <p class="timeline-event-desc zh">诚邀您与我们一同见证新人秦晋之好，开启人生新的篇章。</p>
+        </div>
+      </div>
+
+
+      <!-- Item 3 -->
+      <div class="timeline-item">
+        <div class="timeline-time">15:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <p class="timeline-event-label en">Reception</p>
+          <p class="timeline-event-label zh">婚庆</p>
+          <h3 class="timeline-event-title en">Raise your glass!</h3>
+          <h3 class="timeline-event-title zh">请举杯同庆</h3>
+          <p class="timeline-event-desc en">A toast to the newly weds.</p>
+          <p class="timeline-event-desc zh">祝贺新人百年好合,白头皆老,早生贵子！</p>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="timeline-item">
+        <div class="timeline-time">16:30</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <p class="timeline-event-label en">Transfer</p>
+          <p class="timeline-event-label zh">赴宴</p>
+          <h3 class="timeline-event-title en">To Amersfoort</h3>
+          <h3 class="timeline-event-title zh">前往 Amersfoort</h3>
+          <p class="timeline-event-desc en">We will now make our way to Amersfoort for next part of the celebration. Please plan your own transportation ahead of time, as transportation to the next venue is not provided.</p>
+          <p class="timeline-event-desc zh">我们将前往阿默斯福特继续接下来的婚庆活动。由于不提供前往下一场地的交通服务，敬请宾客提前安排好自己的交通方式。</p>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="timeline-item">
+        <div class="timeline-time">17:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <p class="timeline-event-label en">Arrival</p>
+          <p class="timeline-event-label zh">到达</p>
+          <h3 class="timeline-event-title en">Wedding Dinner Venue</h3>
+          <h3 class="timeline-event-title zh">婚宴地点</h3>
+          <p class="timeline-event-desc en">Arrival at the beautiful venue of Masal for the next part. </p>
+          <p class="timeline-event-desc zh">抵达美丽的 Masal 场地，继续接下来的婚庆活动。</p>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="timeline-item">
+        <div class="timeline-time">18:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <p class="timeline-event-label en">Dinner</p>
+          <p class="timeline-event-label zh">婚宴</p>
+          <h3 class="timeline-event-title en">Wedding Dinner</h3>
+          <h3 class="timeline-event-title zh">婚宴</h3>
+          <p class="timeline-event-desc en">A festive dinner with speeches, toasts, and the cutting of the wedding cake.</p>
+          <p class="timeline-event-desc zh">有致辞、祝酒与切婚礼蛋糕仪式等喜庆活动。</p>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="timeline-item">
+        <div class="timeline-time">22:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <p class="timeline-event-label en">Party</p>
+          <p class="timeline-event-label zh">派对</p>
+          <h3 class="timeline-event-title en">Dancing &amp; Music</h3>
+          <h3 class="timeline-event-title zh">音乐与派对</h3>
+          <p class="timeline-event-desc en">Evening falls, the music plays, and the dance floor is ours.</p>
+          <p class="timeline-event-desc zh">敬请宾客尽情享受音乐与派对。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     8. GALLERY
+     ============================================================ 
+<section id="gallery">
+  <div class="gallery-header">
+    <div class="en">
+      <p class="label-gold" style="margin-bottom:0.8rem;">Sfeerbeelden</p>
+      <h2 class="heading-lg" style="color:var(--ivory);">Foto's</h2>
+    </div>
+    <div class="zh">
+      <p class="label-gold" style="margin-bottom:0.8rem;">Impressions</p>
+      <h2 class="heading-lg" style="color:var(--ivory);">Gallery</h2>
+    </div>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item gi-1">
+      <img
+        src="https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?w=900&q=80&fit=crop"
+        alt="Bruidspaar in de natuur / Couple in nature"
+      >
+    </div>
+    <div class="gallery-item gi-2">
+      <img
+        src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=600&q=80&fit=crop"
+        alt="Bruidsboeket / Bridal bouquet"
+      >
+    </div>
+    <div class="gallery-item gi-3">
+      <img
+        src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=700&q=80&fit=crop"
+        alt="Romantisch moment / Romantic moment"
+      >
+    </div>
+    <div class="gallery-item gi-4">
+      <img
+        src="https://images.unsplash.com/photo-1516826957135-700dedea698c?w=700&q=80&fit=crop"
+        alt="Bloemen op tafel / Floral table setting"
+      >
+    </div>
+    <div class="gallery-item gi-5">
+      <img
+        src="https://images.unsplash.com/photo-1546032996-6dfacbacbf3f?w=700&q=80&fit=crop"
+        alt="Herfst landschap / Autumn landscape"
+      >
+    </div>
+    <div class="gallery-item gi-6">
+      <img
+        src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=700&q=80&fit=crop"
+        alt="Bruidstaart / Wedding cake"
+      >
+    </div>
+  </div>
+</section> -->
+
+<!-- ============================================================
+     9. RSVP
+     ============================================================ -->
+<section id="rsvp">
+  <div class="rsvp-inner">
+    <div class="rsvp-aside">
+
+      <!-- English -->
+      <div class="en">
+        <p class="label" style="margin-bottom:1rem;"> Register </p>
+        <h2 class="heading-lg" style="color:var(--wine); margin-bottom:1.5rem;">RSVP</h2>
+        <div class="ornament" style="justify-content:flex-start;"><span class="ornament-symbol">✦</span><div style="width:50px;height:1px;background:var(--gold);flex:none;"></div><span class="ornament-symbol">✦</span></div>
+<p class="body-text" style="margin:1.5rem 0;">
+          We'd love to know if you can join us. Please register by <strong style="font-weight:500;">30 July 2026</strong> using this form.
+        </p>
+        <p class="body-text" style="color:var(--charcoal-light);">
+          Have any dietary requirements or questions? Let us know — we'll do our best to accommodate everyone.
+        </p>
+      </div>
+
+      <!-- Chinese -->
+      <div class="zh">
+        <p class="label" style="margin-bottom:1rem;">注册</p>
+        <h2 class="heading-lg" style="color:var(--wine); margin-bottom:1.5rem;">回复</h2>
+        <div class="ornament" style="justify-content:flex-start;"><div style="width:50px;height:1px;background:var(--gold);flex:none;"></div><span class="ornament-symbol">❧</span></div>
+        <p class="body-text" style="margin:1.5rem 0;">
+          我们想知道您是否能出席，请您于<strong style="font-weight:500;">7月30日</strong>前登记。
+        </p>
+        <p class="body-text" style="color:var(--charcoal-light);">
+          如果您有饮食过敏，敬请告知，我们将尽力妥善安排。
+        </p>
+      </div>
+
+    </div>
+
+   <!-- Form -->
+  <form 
+  action="https://docs.google.com/forms/d/e/1FAIpQLSe--9f5wJph52row9Nxwdr0THHVwnC8cJ7BfY6wVVahj8W1fQ/formResponse"
+  method="POST"
+  target="_blank"
+  novalidate
+>
+  <div class="form-grid">
+
+    <!-- Full Name -->
+    <div class="form-group full-width">
+      <label class="form-label" for="name">
+        <span class="en">Full name *</span>
+        <span class="zh">姓名 *</span>
+      </label>
+      <input
+        class="form-input"
+        type="text"
+        id="name"
+        name="entry.559352220"
+        required
+        autocomplete="name"
+      >
+    </div>
+
+    <div class="form-group full-width">
+      <label class="form-label" for="name">
+        <span class="en">Will you be attending?</span>
+        <span class="zh">姓名 *</span>
+      </label>
+      
+    </div>
+
+<div class="two-column-wrapper">
+
+  <!-- LEFT COPY -->
+  <div class="column">
+
+      <label class="form-label" for="name">
+        <span class="en">Wedding ceremony? *</span>
+        <span class="zh">婚礼仪式 *</span>
+      </label>
+
+    <label class="radio-item">
+      <input 
+        type="radio" 
+        name="entry.877086558" 
+        value="Yes, I'll be there!" 
+        required
+      >
+  <span class="en">Yes, I'll be there!</span>
+  <span class="zh">是的，我会参加</span>
+    </label>
+
+    <label class="radio-item">
+      <input 
+        type="radio" 
+        name="entry.877086558" 
+        value="Unfortunately I can't make it"
+      >
+      
+  <span class="en">Unfortunately I can't make it</span>
+  <span class="zh">很遗憾，我无法出席</span>
+    </label>
+
+    <input type="hidden" name="entry.877086558_sentinel" value="">
+  </div>
+
+  <!-- RIGHT COPY -->
+  <div class="column">
+
+      <label class="form-label" for="name">
+        <span class="en">Wedding dinner? *</span>
+        <span class="zh">婚宴晚餐 *</span>
+      </label>
+    <label class="radio-item">
+      <input 
+        type="radio" 
+        name="entry.1784089560" 
+        value="Yes, I'll be there!" 
+        required
+      >
+    <span class="en">Yes, I'll be there!</span>
+  <span class="zh">是的，我会参加</span>
+    </label>
+
+    <label class="radio-item">
+      <input 
+        type="radio" 
+        name="entry.1784089560" 
+        value="Unfortunately I can't make it"
+      >
+  <span class="en">Unfortunately I can't make it</span>
+  <span class="zh">很遗憾，我无法出席</span>
+    </label>
+
+    <input type="hidden" name="entry.1784089560_sentinel" value="">
+  </div>
+
+</div>
+
+    <!-- Song request -->
+    <div class="form-group full-width">
+      <label class="form-label" for="song">
+        <span class="en">Song request for the dance floor? (optional)</span>
+        <span class="zh">有想在舞池上听的歌曲吗（可选）</span>
+      </label>
+      <input
+        class="form-input"
+        type="text"
+        id="song"
+        name="entry.1751303409"
+      >
+    </div>
+
+    <!-- Dietary -->
+    <div class="form-group full-width">
+      <label class="form-label" for="dietary">
+        <span class="en">Dietary requirements / allergies</span>
+        <span class="zh">饮食需求 / 过敏事项</span>
+      </label>
+      <textarea
+        class="form-textarea"
+        id="dietary"
+        name="entry.1948932213"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <!-- Message -->
+    <div class="form-group full-width">
+      <label class="form-label" for="message">
+        <span class="en">Message to the couple (optional)</span>
+        <span class="zh">给新人的留言（可选）</span>
+      </label>
+      <textarea
+        class="form-textarea"
+        id="message"
+        name="entry.443565211"
+        rows="4"
+      ></textarea>
+    </div>
+
+    <!-- Submit -->
+    <div class="form-submit">
+      <button type="submit" class="btn-submit">
+        <span class="en">Submit RSVP</span>
+        <span class="zh">提交出席回复</span>
+      </button>
+    </div>
+
+  </div>
+</form>
+
+  </div>
+</section>
+
+   
+
+<!-- ============================================================
+     RULES
+     ============================================================ -->
+
+<section id="rules">
+  <div class="rules-inner">
+  <div class="rules-header">
+
+    <div class="en">
+      <h2 class="rules-lg" style="color:var(--wine); margin-bottom:1rem;">Good to know</h2>
+
+      <div class="rules-notes">
+        <h3 class="rules-sm" style="color:var(--wine); margin-top:1.5rem;">Guestbook</h3>
+        <p class="rules-text" >A guestbook will be placed at the entrance of the wedding dinner venue. We’d love for you to sign it and leave us a message.</p>
+
+        <h3 class="rules-sm" style="color:var(--wine); margin-top:1.5rem;">Photobooth Fun</h3>
+        <p class="rules-text">We’ll have a photobooth during the celebration, please enjoy it and capture some memories with us.</p>
+
+        <h3 class="rules-sm" style="color:var(--wine); margin-top:1.5rem;">Dress Etiquette</h3>
+        <p class="rules-text">As part of our wedding customs, we kindly ask guests to avoid wearing white, black or red accessories, such as jewelry and ties. Thank you for helping us honour this tradition.</p>
+      </div>
+    </div>
+
+    <div class="zh">
+      <h2 class="rules-lg" style="color:var(--wine); margin-bottom:1rem;">宾客须知</h2>
+
+      <div class="rules-notes">
+        <h3 class="rules-sm" style="color:var(--wine); margin-top:1.5rem;">留言簿</h3>
+        <p class="rules-text">婚宴入口处将放置留言簿，诚挚邀请您写下祝福与留言。</p>
+
+        <h3 class="rules-sm" style="color:var(--wine); margin-top:1.5rem;">拍照留念</h3>
+        <p class="rules-text">现场将设有拍照亭，欢迎大家尽情拍照，留下美好回忆。</p>
+
+        <h3 class="rules-sm" style="color:var(--wine); margin-top:1.5rem;">着装礼仪</h3>
+        <p class="rules-text">依照婚礼习俗，敬请宾客避免配戴白色或黑色首饰。感谢您与我们一同尊重传统。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="divider-full" style="margin-bottom:4rem;background:linear-gradient(to right, transparent, rgba(201,169,110,0.3), transparent);"></div>
+
+  <h2 class="footer-names">Li <span class="amp">&amp;</span> Jenny</h2>
+  <p class="footer-date">
+    <span class="en">7 September 2026 · Baarn &amp; Amersfoort</span>
+    <span class="zh">2026 年 9 月 7 日  · Baarn &amp; Amersfoort</span>
+  </p>
+
+  <div class="footer-ornament">
+    <span class="footer-heart">♥</span>
+  </div>
+
+  <p class="body-text" style="color:rgba(245,240,232,0.4); max-width:400px; margin:0 auto 3rem; font-size:0.8rem; text-align:center;">
+    <span class="en">We are excited to share this joyful celebration with you and create beautiful memories together.</span>
+    <span class="zh">我们很高兴能与你一同分享这场喜悦的庆典，并共同留下美好的回忆</span>
+  </p>
+
+  <div class="divider-full" style="margin-bottom:2rem;background:linear-gradient(to right, transparent, rgba(201,169,110,0.15), transparent);"></div>
+  <p class="footer-bottom">
+    <span class="en">© 2026 Li &amp; Jenny · All rights reserved</span>
+    <span class="zh">© 2026 Li &amp; Jenny · 版权所有，保留所有权利</span>
+  </p>
+</footer>
+
+</body>
+</html>
